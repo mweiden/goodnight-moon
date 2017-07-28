@@ -8,6 +8,9 @@ import (
 	"os"
 	"io/ioutil"
 	"strconv"
+	"bytes"
+	"encoding/json"
+	"./text_metrics"
 )
 
 var (
@@ -28,7 +31,7 @@ func main() {
 
 	http.Handle("/", gmHandler)
 	http.Handle("/goodnight_moon.jpg", imgHandler)
-	http.HandleFunc("/flesch", fleschHandler)
+	http.HandleFunc("/flesh", fleschHandler)
 	http.HandleFunc("/-/health", healthHandler)
 
 	listen := fmt.Sprintf("%s:%d", *host, *port)
@@ -37,17 +40,37 @@ func main() {
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
-	status := http.StatusOK
-	w.WriteHeader(status)
-	w.Header().Set("content-type", "text/plain")
+	w.Header().Set("Content-Type", "text/plain")
 	w.Write([]byte("It's OK!"))
+	w.WriteHeader(http.StatusOK)
+}
+
+type FleschKincaidRequest struct {
+	Text string
+}
+
+type FleschKincaidResponse struct {
+	Grade float64 `json:"grade"`
+	Score float64 `json:"score"`
 }
 
 func fleschHandler(w http.ResponseWriter, r *http.Request) {
-	status := http.StatusOK
-	w.WriteHeader(status)
-	w.Header().Set("content-type", "text/plain")
-	w.Write([]byte("It's OK!"))
+	w.Header().Set("Content-Type", "application/json")
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(r.Body)
+	var request FleschKincaidRequest
+	err := json.Unmarshal(buf.Bytes(), &request)
+	if err != nil {
+		w.Write([]byte("{\"error\":\"bad request\"}"))
+	}
+	score, gradeLevel := text_metrics.FleschKincaid(request.Text)
+	response := FleschKincaidResponse{Score: score, Grade: gradeLevel}
+	responseJson, err := json.Marshal(response)
+	if err != nil {
+		w.Write([]byte("{\"error\":\"bad request\"}"))
+	} else {
+		w.Write([]byte(responseJson))
+	}
 }
 
 type imageHandler struct {

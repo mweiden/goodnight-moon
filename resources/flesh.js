@@ -13,8 +13,8 @@ var get_grade_level = function(test_text) {
     data: JSON.stringify({'text': test_text}),
     timeout: 3000,
     success: function(json) {
-      $('#flesch-kincaid-grade').text(json['grade']);
-      $('#flesch-score').text(json['score']);
+      $('#flesch-kincaid-grade').text(parseFloat(json['grade']).toFixed(2));
+      $('#flesch-score').text(parseFloat(json['score']).toFixed(2));
     }
   });
 };
