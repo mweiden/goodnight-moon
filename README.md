@@ -7,4 +7,8 @@ There are many similar services online, but sending documents onto the open inte
 
 To see what Goodnight Moon looks like, see it [hosted on my website](https://mweiden.github.io/goodnight-moon/). Do not use this public version for sensitive documents.
 
-This text has a 9th grade reading level.
+## Namesake
+
+Goodnight Moon is named after the [children's book](https://en.wikipedia.org/wiki/Goodnight_Moon) of the same name. While written simply, it is considered a classic and has sold over 48 million copies.
+
+*<sup>This text has a 8th grade reading level.</sup>
