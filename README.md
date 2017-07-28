@@ -11,4 +11,4 @@ To see what Goodnight Moon looks like, see it [hosted on my website](https://mwe
 
 Goodnight Moon is named after the [children's book](https://en.wikipedia.org/wiki/Goodnight_Moon) of the same name. While written simply, it is considered a classic and has sold over 48 million copies.
 
-*<sup>This text has a 8th grade reading level.</sup>
+*<sup>This text has an 8th grade reading level.</sup>
