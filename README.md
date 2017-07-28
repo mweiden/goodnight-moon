@@ -7,4 +7,4 @@ There are many similar services online, but sending documents onto the open inte
 
 To see what Goodnight Moon looks like, see it [hosted on my website](https://mweiden.github.io/goodnight-moon/). Do not use this public version for sensitive documents.
 
-This text has an 9th grade reading level.
+This text has a 9th grade reading level.
