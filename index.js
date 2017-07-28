@@ -28,7 +28,10 @@ $(function () {
     set_form_actions();
 });
 
-// https://github.com/daveross/flesch-kincaid/blob/master/flesch-kincaid.js
+////
+// Text metrics
+// (copied directly for security reasons)
+// Original source: https://github.com/daveross/flesch-kincaid/blob/master/flesch-kincaid.js
 var syllables = function syllables(x) {
 /*
  * basic algortithm: each vowel-group indicates a syllable, except for: final
