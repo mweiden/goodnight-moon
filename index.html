@@ -5,13 +5,8 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
-    <style>
-      body {
-          font-family: Courier;
-          font-size: 150%;
-      }
-    </style>
     <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div class="row">
@@ -42,6 +37,11 @@
             <a href="http://www.newyorker.com/">The New Yorker</a> editorial staff tries not to
             publish text that exceeds an 11th grade reading level.
             You may want to simplify your text if it scores higher than that.
+        </p>
+        <p>
+            <h3 id="sentences-by-score-title" style="visibility:hidden">Sentences ranked by score</h3>
+            <table id="sentences-by-score">
+            </table>
         </p>
     </div>
     <div class="col-lg-3">

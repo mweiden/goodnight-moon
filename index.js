@@ -11,6 +11,20 @@ var get_grade_level = function(test_text) {
 };
 
 
+var display_sentences = function(test_text) {
+  sentences_array = test_text.split('. ');
+  scores = sentences_array.map(
+    function(s) {return {score: fleschKincaid(s).score, sentence: s}; }
+  );
+  //.sortBy(function(x) { return x.score; }).value();
+  ul_text = scores.sort(function(a, b) { return a.score - b.score; }).map(
+    function(ele) {return `<tr><td class="columnA">${ele.score.toFixed(2)}</td><td class="columnB">${ele.sentence}</td></tr>`}
+  ).join("\n");
+  $('#sentences-by-score').html(ul_text);
+  $('#sentences-by-score-title').css('visibility', 'visible');
+};
+
+
 var set_form_actions = function() {
   $("#test-text-form").submit(function(e) {
       e.preventDefault();
@@ -20,6 +34,7 @@ var set_form_actions = function() {
       text_text = get_test_text();
       if (text_text != null) {
         get_grade_level(test_text);
+        display_sentences(test_text);
       }
   });
 };
